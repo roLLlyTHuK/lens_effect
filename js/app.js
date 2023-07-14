@@ -28,7 +28,7 @@ function handleMove(e) {
     moveY = (e.clientY - window.innerHeight / 2) * 0.01;
   } else if (e.type === 'deviceorientation') {
     // Device tilt
-    moveY = e.beta;
+    moveY = e.beta-90;
     moveX = e.gamma;
   }
 
