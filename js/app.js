@@ -7,18 +7,7 @@
 // 	})
 // })
 
-// document.addEventListener('deviceorientation', e => {
-//   const tiltX = e.beta; // Tilt around x-axis (forward/backward tilt)
-// 	const tiltY = e.gamma; // Tilt around y-axis (left/right tilt)
-// 	const tiltZ = e.alpha; // Tilt around z-axis
 
-//   Object.assign(document.documentElement, {
-//     style: `
-//       --move-x: ${tiltX * -0.005}deg;
-//       --move-y: ${tiltY * 0.01}deg;
-//     `
-//   });
-// });
 function handleMove(e) {
   let moveX, moveY;
 
@@ -28,8 +17,8 @@ function handleMove(e) {
     moveY = (e.clientY - window.innerHeight / 2) * 0.01;
   } else if (e.type === 'deviceorientation') {
     // Device tilt
-    moveY = e.beta-90;
-    moveX = e.gamma;
+    moveY = (e.beta+90)*.01;
+    moveX = e.gamma*-.001;
   }
 
   Object.assign(document.documentElement, {
